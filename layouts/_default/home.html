@@ -1,0 +1,264 @@
+{{ define "main" }}
+<!-- ======= Hero Section ======= -->
+{{with .Params.hero_section}}
+<section id="hero" class="d-flex align-items-center justify-content-center">
+  <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
+    <h1>{{.title}}</h1>
+    <h2>{{.content}}</h2>
+    <div class="d-flex justify-content-center">
+      {{if .botton.enable}}
+      <!---->
+      {{ with .botton}}
+      <a href="{{.link}}" class="btn-get-started scrollto text-center"
+        >{{.label}}</a
+      >
+      {{end}}
+      <!---->
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End Hero -->
+
+<!-- ======= About Section ======= -->
+{{ with .Params.about_section}}
+<section id="about" class="about section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>{{.title}}</h2>
+      <p>{{.title_content}}</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+        <img src="/img/{{.image}}" class="img-fluid" alt="" />
+      </div>
+      <div
+        class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <h3>{{.content_title}}</h3>
+        {{range.content}}
+        <p>{{. | safeHTML}}</p>
+        {{end}}
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End About Section -->
+
+<!-- ======= Featured Services Section ======= -->
+{{with .Params.our_areas}}
+<section id="featured-services" class="featured-services">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>{{.title}}</h2>
+      <p>{{.title_content}}</p>
+    </div>
+    <div class="row">
+      {{ range.card}}
+      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><img src="/img/{{.icon}}" alt="" /></div>
+          <h4 class="title"><a href="">{{.title}}</a></h4>
+          <p class="description">{{.content}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End Featured Services Section -->
+
+<!-- ======= Clients Section ======= -->
+{{with .Params.clients}}
+<section id="clients" class="clients section-bg">
+  <div class="container" data-aos="zoom-in">
+    <div class="row justify-content-center">
+      {{range.images}}
+      <div
+        class="col-md-2 col-6 d-flex align-items-center justify-content-center"
+      >
+        <img src="/img/clients/{{.}}" class="img-fluid" alt="" />
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End Clients Section -->
+
+<!-- ======= Testimonials Section ======= -->
+{{ with .Params.testimonials}}
+<section id="testimonials" class="testimonials">
+  <div class="container" data-aos="zoom-in">
+    <div class="section-title">
+      <h2>{{.title}}</h2>
+      <p>{{.title_content}}</p>
+    </div>
+    <div
+      class="testimonials-slider swiper"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div class="swiper-wrapper">
+        {{range .testimonial}}
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img
+              src="/img/testimonials/{{.image}}"
+              class="testimonial-img"
+              alt=""
+            />
+            <h3>{{.name}}</h3>
+            <h4>{{.title}}</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{.content}}
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+        </div>
+        {{end}}
+        <!-- End testimonial item -->
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End Testimonials Section -->
+
+<!-- ======= Contact Section ======= -->
+{{ with .Params.contact}}
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>{{.title}}</h2>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-3">
+        <div class="info-box mb-4">
+          <i class="bx bx-map"></i>
+          <h3>Unsere Adresse</h3>
+          <p>{{.address}}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box mb-4">
+          <i class="bx bx-envelope"></i>
+          <h3>E-Mail Adresse</h3>
+          <p>{{.email}}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box mb-4">
+          <i class="bx bx-phone-call"></i>
+          <h3>Telefonnummer</h3>
+          <p>{{.phone}}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box mb-4">
+          <i class="bx bx-voicemail"></i>
+          <h3>Fax</h3>
+          <p>{{.fax}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-6">
+        <iframe
+          class="mb-4 mb-lg-0"
+          src="{{.map}}"
+          frameborder="0"
+          style="border: 0; width: 100%; height: 384px"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="col-lg-6">
+        <form
+          action="forms/contact.php"
+          method="post"
+          role="form"
+          class="php-email-form"
+        >
+          <div class="row">
+            <div class="col form-group">
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                placeholder="Ihren Namen"
+                required
+              />
+            </div>
+            <div class="col form-group">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="Ihre E-Mail Adresse"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="phone"
+                id="phone"
+                placeholder="Ihre Telefonnummer"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="subject"
+              id="subject"
+              placeholder="Betreff"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              name="message"
+              rows="5"
+              placeholder="Ihre Nachricht an uns"
+              required
+            ></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">
+              Your message has been sent. Thank you!
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit">Senden</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+<!-- End Contact Section -->
+{{ end }}

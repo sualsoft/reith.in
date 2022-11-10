@@ -1,3 +1,119 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'IT-Beratung, IT-Service Heidelberg, Mannheim, Ludwigshafen, Rhein-Neckar.'
+
+# main menu
+[menu] 
+[[menu.nav]]
+  identifier = "startseite"
+  name = "Startseite"
+  url = "/"
+  weight = 1
+
+[[menu.nav]]
+  identifier = "leistungen"
+  name = "Leistungen"
+  url = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "beratung"
+  name = "Beratung"
+  url = "beratung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "virtualisierung"
+  name = "Virtualisierung"
+  url = "virtualisierung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "virtualisierung"
+  name = "Virtualisierung"
+  url = "virtualisierung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "telefonanlagen"
+  name = "Telefonanlagen"
+  url = "telefonanlagen"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "hosting"
+  name = "Hosting"
+  url = "hosting"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "datensicherung"
+  name = "datensicherung"
+  url = "Datensicherung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "systemsicherheit"
+  name = "Systemsicherheit"
+  url = "systemsicherheit"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "leasing"
+  name = "Leasing"
+  url = "leasing"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "datenrettung"
+  name = "Datenrettung"
+  url = "datenrettung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "notfall-service"
+  name = "Notfall-Service"
+  url = "notfall-service"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "fernwartung"
+  name = "Fernwartung"
+  url = "fernwartung"
+  parent = "leistungen"
+  weight = 2
+
+[[menu.nav]]
+  identifier = "karriere"
+  name = "Karriere"
+  url = "karriere"
+  weight = 3
+
+[[menu.nav]]
+  identifier = "ueber-uns"
+  name = "Über uns"
+  url = "ueber-uns"
+  weight = 4
+
+[[menu.nav]]
+  identifier = "erfolge"
+  name = "Erfolge"
+  url = "erfolge"
+  weight = 5
+
+[[menu.nav]]
+  identifier = "kontakt"
+  name = "Kontakt"
+  url = "kontakt"
+  weight = 6
+
