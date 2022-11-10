@@ -7,7 +7,7 @@ title = 'IT-Beratung, IT-Service Heidelberg, Mannheim, Ludwigshafen, Rhein-Necka
 [[menu.nav]]
   identifier = "startseite"
   name = "Startseite"
-  url = "/"
+  url = ""
   weight = 1
 
 [[menu.nav]]
@@ -108,7 +108,7 @@ title = 'IT-Beratung, IT-Service Heidelberg, Mannheim, Ludwigshafen, Rhein-Necka
 [[menu.nav]]
   identifier = "erfolge"
   name = "Erfolge"
-  url = "erfolge"
+  url = "erfolgsgeschichten"
   weight = 5
 
 [[menu.nav]]
