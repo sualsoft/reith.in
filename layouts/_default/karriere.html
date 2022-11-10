@@ -1,0 +1,86 @@
+{{ define "main" }}
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>{{.Title}}</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Karriere</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<!-- ======= Frequently Asked Questions Section ======= -->
+
+<section id="faq" class="faq">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Starten Sie Ihre Karriere mit uns!</h2>
+
+      <p>
+        Auf der Suche nach neuen Herausforderungen? Wir glauben an
+        Unternehmenserfolg durch Teamwork und freuen uns darauf Sie bald in
+        unserem Team begrüßen zu können.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      {{with .Params.faq1}}
+      <div class="col-md-6">
+        <h3 class="mb-5" style="color: #39537a">{{.title}}</h3>
+        <ul class="faq-list">
+          {{range .faq}}
+          <li>
+            <div
+              data-bs-toggle="collapse"
+              class="collapsed question"
+              href="#faq{{.id}}"
+            >
+              {{.q}}
+              <i class="bi bi-chevron-down icon-show"></i
+              ><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq{{.id}}" class="collapse" data-bs-parent=".faq-list">
+              <p>{{.a | safeHTML}}</p>
+            </div>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+      {{end}}
+
+      <!---->
+      {{with .Params.faq2}}
+      <div class="col-md-6">
+        <h3 class="mb-5" style="color: #39537a">{{.title}}</h3>
+        <ul class="faq-list">
+          {{range .faq}}
+          <li>
+            <div
+              data-bs-toggle="collapse"
+              class="collapsed question"
+              href="#faq{{.id}}"
+            >
+              {{.q}}
+              <i class="bi bi-chevron-down icon-show"></i
+              ><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq{{.id}}" class="collapse" data-bs-parent=".faq-list">
+              <p>{{.a | safeHTML}}</p>
+            </div>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<!-- End Frequently Asked Questions Section -->
+
+{{end}}
