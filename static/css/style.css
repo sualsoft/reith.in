@@ -1046,6 +1046,30 @@ section {
 #featured-services ul {
   margin-left: 24px;
 }
+
+.inner-page .card {
+  border-radius: 0px !important;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 0px;
+  z-index: 1;
+  border: none;
+}
+.inner-page .card img {
+  border-radius: 0px !important;
+}
+.inner-page .card a {
+  border-radius: 0px !important;
+  background-color: #39537a;
+}
+.inner-page .card a:hover {
+  border-radius: 0px !important;
+  background-color: #435f89;
+}
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/

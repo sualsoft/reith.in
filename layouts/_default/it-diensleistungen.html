@@ -15,13 +15,27 @@
 <!-- End Breadcrumbs -->
 
 <section class="inner-page">
-  <div class="container">
+  <div class="container" data-aos="fade-up">
     <p>{{.Content}}</p>
-    <ul>
+
+    <div class="row">
       {{range .Pages}}
-      <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+      <div
+        class="col-md-6 col-lg-4 d-flex align-items-stretch justify-content-between mb-3"
+      >
+        {{ with .Params.hero}}
+        <div class="card">
+          <img src="/img/{{.img}}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{.title}}</h5>
+            <p class="card-text">{{.sub_title}}</p>
+            {{end}}
+          </div>
+          <a href="{{.Permalink}}" class="btn btn-primary">mehr erfahren</a>
+        </div>
+      </div>
       {{end}}
-    </ul>
+    </div>
   </div>
 </section>
 
