@@ -19,90 +19,91 @@ title = 'IT-Beratung, IT-Service Heidelberg, Mannheim, Ludwigshafen, Rhein-Necka
 [[menu.nav]]
   identifier = "beratung"
   name = "Beratung"
-  url = "beratung"
+  url = "it-diensleistungen/beratung/"
+  parent = "leistungen"
+  weight = 1
+
+[[menu.nav]]
+  identifier = "infrastruktur"
+  name = "Infrastruktur"
+  url = "it-diensleistungen/infrastruktur-technik/"
   parent = "leistungen"
   weight = 2
 
 [[menu.nav]]
   identifier = "virtualisierung"
   name = "Virtualisierung"
-  url = "virtualisierung"
+  url = "it-diensleistungen/virtualisierung/"
   parent = "leistungen"
-  weight = 2
-
-[[menu.nav]]
-  identifier = "virtualisierung"
-  name = "Virtualisierung"
-  url = "virtualisierung"
-  parent = "leistungen"
-  weight = 2
+  weight = 3
 
 [[menu.nav]]
   identifier = "telefonanlagen"
   name = "Telefonanlagen"
-  url = "telefonanlagen"
+  url = "it-diensleistungen/ip-telefonanlage-voip/"
   parent = "leistungen"
-  weight = 2
+  weight = 4
 
 [[menu.nav]]
   identifier = "hosting"
   name = "Hosting"
-  url = "hosting"
+  url = "it-diensleistungen/hosting/"
   parent = "leistungen"
-  weight = 2
+  weight = 5
 
 [[menu.nav]]
   identifier = "datensicherung"
-  name = "datensicherung"
-  url = "Datensicherung"
+  name = "Datensicherung"
+  url = "it-diensleistungen/datensicherung"
   parent = "leistungen"
-  weight = 2
+  weight = 6
 
 [[menu.nav]]
   identifier = "systemsicherheit"
   name = "Systemsicherheit"
-  url = "systemsicherheit"
+  url = "it-diensleistungen/systemsicherheit/"
   parent = "leistungen"
-  weight = 2
+  weight = 7
 
 [[menu.nav]]
   identifier = "leasing"
   name = "Leasing"
-  url = "leasing"
+  url = "it-diensleistungen/leasing/"
   parent = "leistungen"
-  weight = 2
+  weight = 8
 
 [[menu.nav]]
   identifier = "datenrettung"
   name = "Datenrettung"
-  url = "datenrettung"
+  url = "it-diensleistungen/datenrettung/"
   parent = "leistungen"
-  weight = 2
+  weight = 9
 
 [[menu.nav]]
   identifier = "notfall-service"
   name = "Notfall-Service"
-  url = "notfall-service"
+  url = "it-diensleistungen/notfall-service/"
   parent = "leistungen"
-  weight = 2
+  weight = 10
 
 [[menu.nav]]
   identifier = "fernwartung"
   name = "Fernwartung"
-  url = "fernwartung"
+  url = "it-diensleistungen/fernwartung/"
   parent = "leistungen"
-  weight = 2
+  weight = 11
 
-[[menu.nav]]
-  identifier = "karriere"
-  name = "Karriere"
-  url = "karriere"
-  weight = 3
 
 [[menu.nav]]
   identifier = "ueber-uns"
   name = "Über uns"
   url = "ueber-uns"
+  weight = 3
+
+[[menu.nav]]
+  identifier = "karriere"
+  name = "Karriere"
+  url = "karriere"
   weight = 4
 
 [[menu.nav]]
