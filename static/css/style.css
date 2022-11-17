@@ -1017,7 +1017,35 @@ section {
   line-height: 26px;
   color: #777777;
 }
+/*--------------------------------------------------------------
+# other pages
+--------------------------------------------------------------*/
 
+.it h2 {
+  color: #39537a;
+}
+.c-im h3 {
+  color: #39537a;
+  font-size: 18px;
+}
+.c-im h5 {
+  font-size: 16px;
+}
+#featured-services blockquote {
+  color: #fff;
+  padding-top: 16px;
+  background-color: #39537a;
+}
+#featured-services blockquote a {
+  color: #b4d2ff;
+  text-align: center;
+}
+#featured-services blockquote a:hover {
+  color: #fff;
+}
+#featured-services ul {
+  margin-left: 24px;
+}
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/

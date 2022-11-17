@@ -13,7 +13,7 @@ title = 'IT-Beratung, IT-Service Heidelberg, Mannheim, Ludwigshafen, Rhein-Necka
 [[menu.nav]]
   identifier = "leistungen"
   name = "Leistungen"
-  url = "leistungen"
+  url = "it-diensleistungen"
   weight = 2
 
 [[menu.nav]]
