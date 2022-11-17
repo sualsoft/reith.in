@@ -1,0 +1,67 @@
+{{ define "main" }}
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>{{.Title}}</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>{{.Title}}</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+{{ with .Params.hero}}
+<section class="inner-page">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-9 it text-center">
+        <h2>{{.title}}</h2>
+        <h3>{{.sub_title}}</h3>
+        <p>{{.content | safeHTML}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container" data-aos="fade-up">
+    <div
+      class="row gy-4 portfolio-container"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      {{range .Pages}}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        {{with .Params.hero}}
+        <div class="portfolio-wrap">
+          <img src="/img/portfolio/{{.main_image}}" class="img-fluid" alt="" />
+          <div class="portfolio-info">
+            <div class="portfolio-links">
+              <a
+                href="/img/portfolio/{{.main_image}}"
+                data-gallery="portfolioGallery"
+                class="portfokio-lightbox"
+                title="App 1"
+                ><i class="bi bi-plus"></i
+              ></a>
+              {{end}}
+              <a href="{{.Permalink}}" title="More Details"
+                ><i class="bi bi-link"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->
+
+{{end}}

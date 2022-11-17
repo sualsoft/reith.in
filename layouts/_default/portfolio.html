@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>
+        <a href="#" target="_blank"
+          >{{.Title}}
+          <sup
+            ><i
+              class="bi bi-box-arrow-up-right"
+              style="font-size: 12px"
+            ></i></sup
+        ></a>
+      </h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/erfolgsgeschichten/">Erfolgsgeschichten</a></li>
+        <li>{{.Title}}</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+{{ with .Params.hero}}
+<section class="inner-page">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="/img/portfolio/{{.img}}" alt="" class="img-fluid" />
+      </div>
+      <div class="col-md-6 it">
+        <h2>{{.title}}</h2>
+        <h5>{{.sub_title}}</h5>
+        <p>{{.content | safeHTML}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+<!---->
+<section class="inner-page">
+  <div class="container">
+    <p>{{.Content}}</p>
+  </div>
+</section>
+{{end}}
