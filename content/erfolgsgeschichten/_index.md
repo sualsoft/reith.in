@@ -1,5 +1,5 @@
 ---
-layout: erfo
+layout: erfolgsgeschichten
 title: Erfolgsgeschichten
 hero:
   title: Zufriedene Kunden sind der beste Beweis für eine erfolgreiche Zusammenarbeit.
