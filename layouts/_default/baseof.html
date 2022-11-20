@@ -3,6 +3,7 @@
   {{ partial "head.html" . }}
 
   <body>
+    
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-flex align-items-center">
       <div
@@ -68,13 +69,19 @@
       </div>
     </header>
     <!-- End Header -->
-
+    
+    <div class="cookies-eu-banner hidden">
+      By clicking ”OK”, you agree to the storing of cookies on your device to
+      enhance site navigation, analyze site usage, and improve marketing.
+      <button>Accept</button>
+    </div>
     <main id="main">
       
 
       {{ block "main" . }}
       <!---->
       {{ end }}
+      
     </main>
     <!-- End #main -->
 
