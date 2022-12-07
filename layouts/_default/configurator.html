@@ -1,0 +1,564 @@
+{{ define "main" }}
+
+<style type="text/css">
+  .micro-tooltip {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+    border-color: #205082 !important;
+  }
+
+  .micro-tooltip__arrow {
+    border-top-color: #205082 !important;
+  }
+
+  section#intro > .sectionBackground:nth-child(1) {
+    background-color: #004f87;
+  }
+
+  section#intro > .sectionBackground:nth-child(2) {
+    background-image: url("https://media.menten.com/img/de/electric-grid_bg.webp");
+    background-repeat: repeat-x;
+  }
+
+  section#configurator h3 {
+    margin-bottom: 0;
+  }
+
+  section#configurator hr {
+    height: 2px;
+    padding: 0;
+    margin: 0 15px;
+  }
+
+  section#configurator .infrastructure-box {
+    position: relative;
+    height: 280px;
+    padding: 10px;
+    background-color: #eee;
+  }
+
+  section#configurator .infrastructure-box:first-child {
+    border-right: 5px solid #f7f7f7;
+  }
+
+  section#configurator .infrastructure-box:last-child {
+    border-left: 5px solid #f7f7f7;
+  }
+
+  section#configurator .infrastructure-box > i:nth-child(1) {
+    margin-top: 15px;
+    font-size: 85px;
+    opacity: 0.3;
+  }
+
+  section#configurator .infrastructure-box > span:nth-child(2) {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  section#configurator .infrastructure-box > span:nth-child(3) {
+    line-height: 16px;
+    opacity: 0.5;
+  }
+
+  section#configurator .infrastructure-box > span:nth-child(4) {
+    opacity: 0.5;
+  }
+
+  section#configurator .infrastructure-box .number-counter {
+    height: 40px;
+  }
+
+  section#configurator .infrastructure-box .number-counter i {
+    font-size: 30px;
+    cursor: pointer;
+    color: #205082;
+  }
+
+  section#configurator .infrastructure-box .number-counter span {
+    font-size: 27px;
+    font-weight: 700;
+  }
+
+  section#configurator .infrastructure-box > span:nth-child(6) {
+    opacity: 0.6;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  section#configurator .sla-container {
+    overflow: auto;
+    width: 100vw;
+  }
+
+  section#configurator .sla-box {
+    position: relative;
+    padding: 0;
+    border-top: 2px solid transparent;
+    min-width: 260px;
+  }
+
+  section#configurator .selected {
+    border: 2px solid #2050826e;
+  }
+
+  section#configurator .sla-box:first-child > span:nth-child(2),
+  section#configurator .sla-box:first-child > span:nth-child(3),
+  section#configurator .sla-box:first-child > span:nth-child(4),
+  section#configurator .sla-box:first-child > span:nth-child(5) {
+    border-left: 1px solid #e8e5e5;
+  }
+
+  section#configurator .sla-box:last-child > span:nth-child(2),
+  section#configurator .sla-box:last-child > span:nth-child(3),
+  section#configurator .sla-box:last-child > span:nth-child(4),
+  section#configurator .sla-box:last-child > span:nth-child(5) {
+    border-right: 1px solid #e8e5e5;
+  }
+
+  section#configurator .sla-box:not(#labels) {
+    cursor: pointer;
+  }
+
+  section#configurator .sla-box > span:nth-child(1) {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 25px 0 45px 0;
+    text-transform: uppercase;
+  }
+
+  section#configurator .sla-box#labels > span {
+    font-weight: 700;
+  }
+
+  section#configurator .sla-box#labels > span > i {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  section#configurator .sla-box#labels > span > i:hover {
+    color: #205082;
+  }
+
+  section#configurator .sla-box > span:nth-child(2),
+  section#configurator .sla-box > span:nth-child(3),
+  section#configurator .sla-box > span:nth-child(4),
+  section#configurator .sla-box > span:nth-child(5) {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  section#configurator .sla-box > span:nth-child(2),
+  section#configurator .sla-box > span:nth-child(4) {
+    background-color: #e8e5e5;
+  }
+
+  section#configurator .sla-box > span:nth-child(5) {
+    border-bottom: 1px solid #e8e5e5;
+  }
+
+  section#configurator .sla-box > div:nth-child(6) {
+    padding: 30px 0;
+  }
+
+  section#configurator
+    .sla-box:not(.selected)
+    > div:nth-child(6)
+    .btn:first-child {
+    display: none !important;
+  }
+
+  section#configurator .sla-box.selected > div:nth-child(6) .btn:last-child {
+    display: none !important;
+  }
+
+  section#configurator .sla-box > div:nth-child(6) .btn {
+    width: 70%;
+  }
+
+  section#configurator .sla-box > div:nth-child(6) .btn:last-child {
+    opacity: 0.5;
+  }
+
+  section#configurator #costs i {
+    font-size: 40px;
+    opacity: 0.6;
+  }
+
+  section#configurator #costs span.fa-stack i:last-child {
+    font-size: 21px !important;
+    top: 10px;
+    left: -1px;
+  }
+
+  section#configurator #costs span.fa-stack.monthlySumIcon i {
+    font-size: 80px;
+    opacity: 12;
+  }
+
+  section#configurator #costs span.fa-stack.monthlySumIcon i:nth-child(2) {
+    font-size: 45px !important;
+    top: 34px;
+    left: 15px;
+  }
+
+  section#configurator #costs span.fa-stack.monthlySumIcon i:nth-child(3) {
+    font-size: 40px !important;
+    top: 60px;
+    left: 54px;
+  }
+
+  section#configurator #costs span:nth-child(2) {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 15px 0;
+  }
+
+  section#configurator #costs .bg--mis-blue span:nth-child(1) {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 60px;
+  }
+
+  section#configurator #costs .bg--mis-blue span:nth-child(2) {
+    font-size: initial;
+    font-weight: initial;
+    margin: initial;
+  }
+
+  @media (min-width: 1200px) {
+    section#configurator .sla-container {
+      width: 100%;
+      overflow: initial;
+    }
+
+    section#configurator #costs > div:nth-child(3) {
+      padding-right: 5px;
+    }
+
+    section#configurator #costs > div:nth-child(4) {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    section#configurator #costs > div:nth-child(5) {
+      padding-left: 5px;
+    }
+  }
+</style>
+<script type="application/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    document
+      .querySelectorAll("#configurator .infrastructure-box .number-counter i")
+      .forEach((icon) => {
+        const type = icon.parentElement.dataset.type;
+        const valueSpan = icon.parentElement.querySelector("span");
+        icon.addEventListener("click", function () {
+          let newValue = -1;
+          if (icon.classList.contains("fa-minus-square"))
+            newValue = parseInt(valueSpan.innerText) - 1;
+          else if (icon.classList.contains("fa-plus-square"))
+            newValue = parseInt(valueSpan.innerText) + 1;
+
+          if (type == "vserver") {
+            if (newValue >= parseInt(serverCount.innerText))
+              valueSpan.innerText = newValue;
+          } else {
+            if (newValue >= 0) valueSpan.innerText = newValue;
+          }
+          calcAndRender();
+        });
+      });
+
+    document
+      .querySelectorAll("#configurator .sla-box:not(:first-child)")
+      .forEach((box) => {
+        box.addEventListener("click", function () {
+          document.querySelectorAll("#configurator .sla-box").forEach((box) => {
+            box.classList.remove("selected");
+          });
+          this.classList.add("selected");
+
+          calcAndRender();
+        });
+      });
+
+    const toContactFormLink = µ(".toContactForm").attr("href");
+    console.log(toContactFormLink);
+
+    const documentation = document.getElementById("documentation");
+    const documentationSum = document.getElementById("documentationSum");
+    const oneTimeSum = document.getElementById("oneTimeSum");
+
+    const server = document.getElementById("server");
+    const serverCount = document.getElementById("serverCount");
+    const serverSum = document.getElementById("serverSum");
+
+    const workstation = document.getElementById("workstation");
+    const workstationCount = document.getElementById("workstationCount");
+    const workstationSum = document.getElementById("workstationSum");
+
+    const infrastructureSum = document.getElementById("infrastructureSum");
+    const slaFactor = document.getElementById("slaFactor");
+    const selectedSlaName = document.getElementById("selectedSlaName");
+    const monthlySum = document.getElementById("monthlySum");
+
+    const calcAndRender = function () {
+      serverSum.innerText =
+        server.dataset.price *
+        parseInt(server.querySelector(".number-counter span").innerText);
+      server.querySelector("span:nth-child(6) span").innerText =
+        serverSum.innerText;
+
+      workstationSum.innerText =
+        workstation.dataset.price *
+        parseInt(workstation.querySelector(".number-counter span").innerText);
+      workstation.querySelector("span:nth-child(6) span").innerText =
+        workstationSum.innerText;
+
+      infrastructureSum.innerText =
+        parseInt(serverSum.innerText) + parseInt(workstationSum.innerText);
+
+      const slaFactorBox = document.querySelector(".sla-box.selected");
+      slaFactor.innerText =
+        slaFactorBox.querySelector("span:nth-child(5)").innerText;
+      selectedSlaName.innerText =
+        slaFactorBox.querySelector("span:nth-child(1)").textContent;
+
+      monthlySum.innerText =
+        parseInt(infrastructureSum.innerText) * slaFactorBox.dataset.factor;
+
+      // modify contactLink
+      µ(".toContactForm").attr(
+        "href",
+        toContactFormLink +
+          "?serverCount=" +
+          parseInt(server.querySelector(".number-counter span").innerText) +
+          "&workstationCount=" +
+          parseInt(
+            workstation.querySelector(".number-counter span").innerText
+          ) +
+          "&sla=" +
+          selectedSlaName.innerText
+      );
+    };
+
+    µ(".sla-box:first-child i").tooltip();
+  });
+</script>
+
+<section id="configurator">
+  <div class="container">
+    <div class="row">
+      <h3 class="col-md-12">Ihre IT-Landschaft</h3>
+      <hr class="col-md-12" />
+      <div class="col-md-12 d-flex text-center">
+        <div
+          id="workstation"
+          class="col-md-6 col-md-3 d-flex flex-column infrastructure-box"
+          data-price="20"
+        >
+          <i class="bi bi-display"></i>
+          <span>Arbeitsplätze</span>
+          <span>20€</span>
+          <span>&nbsp;</span>
+          <div
+            class="flex align-items-center justify-content-evenly mt-10 number-counter"
+            data-type="workstation"
+          >
+            <i class="fas fa-minus-square"></i>
+            <span>0</span>
+            <i class="fas fa-plus-square"></i>
+          </div>
+          <span><span>0</span>€</span>
+        </div>
+
+        <div
+          id="server"
+          class="col-md-6 col-md-3 d-flex flex-column infrastructure-box"
+          data-price="125"
+        >
+          <i class="far fa-server"></i>
+          <span>Server</span>
+          <span>125€</span>
+          <span>bis zu 5 v. Server oder 2 Rollen</span>
+          <div
+            class="d-flex align-items-center justify-content-evenly number-counter"
+            data-type="server"
+          >
+            <i class="fas fa-minus-square"></i>
+            <span>0</span>
+            <i class="fas fa-plus-square"></i>
+          </div>
+          <span><span>0</span>€</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="col-md-12">Wählen Sie Ihren Service-Level (SLA)</h3>
+      <hr class="col-md-12" />
+      <div class="col-md-12 flex text-center">
+        <div id="labels" class="col-md-3 d-flex flex-column sla-box">
+          <span>&nbsp;</span>
+          <span class="d-flex justify-content-between align-items-center"
+            >Reaktionszeit
+            <i
+              class="fas fa-info-circle micro-tooltip__handle"
+              data-tooltip-content="Mit der Reaktionszeit garantieren wir Ihnen eine Antwort auf Ihre Anfrage innerhalb des festgelegten Zeitraums. Selbstverständlich kann die Reaktionszeit auch kürzer ausfallen."
+            ></i
+          ></span>
+          <span class="d-flex justify-content-between align-items-center"
+            >Digitalisierungsgrad
+            <i
+              class="fas fa-info-circle micro-tooltip__handle"
+              data-tooltip-content="Der Digitalisierungsgrad gibt an, in welchem Maße ihr operatives Geschäft von IT Systemen abhängt."
+            ></i
+          ></span>
+          <span class="d-flex justify-content-between align-items-center"
+            >Inklusivminuten
+            <i
+              class="fas fa-info-circle micro-tooltip__handle"
+              data-tooltip-content="Mit den Inklusivminuten bieten wir Ihnen monatlich ein vordefiniertes Zeitkontigent für jegliche IT-Dienstleistungen.&lt;br&gt;&lt;br&gt;Probleme, die ohne Änderung an der IT-Landschaft auftreten, sind selbstverständlich immer kostenlos."
+            ></i
+          ></span>
+          <span class="d-flex justify-content-between align-items-center"
+            >Faktor
+            <i
+              class="fas fa-info-circle micro-tooltip__handle"
+              data-tooltip-content="Je nach gewähltem Service-Level erhöht sich der monatliche Betrag mit dem angegebenen Faktor."
+            ></i
+          ></span>
+        </div>
+        <div
+          id="essentials"
+          class="col-md-3 d-flex flex-column sla-box selected"
+          data-factor="1"
+        >
+          <span>Essentials</span>
+          <span>8 Stunden</span>
+          <span>Niedrig</span>
+          <span>0 Minuten</span>
+          <span>1,0</span>
+          <div class="d-flex justify-content-center">
+            <a class="btn d-flex justify-content-between"
+              >Ausgewählt <i class="fas fa-check-square"></i
+            ></a>
+            <a class="btn d-flex justify-content-between"
+              >Auswählen <i class="fas fa-square"></i
+            ></a>
+          </div>
+        </div>
+
+        <div
+          id="corporate"
+          class="col-md-3 d-flex flex-column sla-box"
+          data-factor="1.5"
+        >
+          <span>Corporate</span>
+          <span>4 Stunden</span>
+          <span>Mittel</span>
+          <span>60 Minuten</span>
+          <span>1,5</span>
+          <div class="d-flex justify-content-center">
+            <a class="btn d-flex justify-content-between"
+              >Ausgewählt <i class="fas fa-check-square"></i
+            ></a>
+            <a class="btn d-flex justify-content-between"
+              >Auswählen <i class="fas fa-square"></i
+            ></a>
+          </div>
+        </div>
+
+        <div
+          id="enterprise"
+          class="col-md-3 flex flex--direction-column sla-box"
+          data-factor="1.8"
+        >
+          <span>Enterprise</span>
+          <span>2 Stunden</span>
+          <span>Hoch</span>
+          <span>120 Minuten</span>
+          <span>1,8</span>
+          <div class="flex flex--justify-content-center">
+            <a class="btn flex flex--justify-content-between"
+              >Ausgewählt <i class="fas fa-check-square"></i
+            ></a>
+            <a class="btn flex flex--justify-content-between"
+              >Auswählen <i class="fas fa-square"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="costs" class="row mt-20">
+      <h3 class="col-12">Ihre Kosten</h3>
+      <hr class="col-12" />
+
+      <div class="col-12 col-xl-6">
+        <div
+          class="col-12 col--no-gutters flex--direction-column flex-sm--direction-row flex flex--align-items-center flex--justify-content-evenly bg--light-grey"
+        >
+          <div
+            class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
+          >
+            <i class="far fa-server"></i>
+            <span><span id="serverSum">0</span>€</span>
+            <span>Server</span>
+          </div>
+          <div class="col-12 col-sm-1 flex flex--justify-content-center">
+            <i class="far fa-plus"></i>
+          </div>
+          <div
+            class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
+          >
+            <i class="far fa-desktop"></i>
+            <span><span id="workstationSum">0</span>€</span>
+            <span>Arbeitsplätze</span>
+          </div>
+          <div class="col-12 col-sm-1 flex flex--justify-content-center">
+            <i class="far fa-equals"></i>
+          </div>
+          <div
+            class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
+          >
+            <i class="far fa-building"></i>
+            <span><span id="infrastructureSum">0</span>€</span>
+            <span>IT-Landschaft</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-xl-2 flex">
+        <div
+          class="col-12 flex flex--direction-column flex--align-items-center bg--light-grey"
+        >
+          <i class="far fa-briefcase"></i>
+          <span>x <span id="slaFactor">1,0</span></span>
+          <span id="selectedSlaName">Essentials</span>
+        </div>
+      </div>
+
+      <div class="col-12 col-xl-4 flex">
+        <div
+          class="col-12 flex flex--align-items-center bg--mis-blue color--light"
+        >
+          <div
+            class="col-5 col--no-gutters flex flex--align-self-stretch flex--align-items-center flex--justify-content-center"
+          >
+            <i class="fas fa-sack-dollar" style="font-size: 85px"></i>
+          </div>
+          <div
+            class="col-7 col--no-gutters flex flex--align-items-end flex--align-self-stretch flex--direction-column flex--justify-content-end"
+          >
+            <span class="mb-10"><span id="monthlySum">0</span>€</span>
+            <span>Monatlich</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{end}}
