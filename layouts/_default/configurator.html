@@ -245,6 +245,9 @@
       padding-left: 5px;
     }
   }
+  .flex {
+    display: flex !important;
+  }
 </style>
 <script type="application/javascript">
   document.addEventListener("DOMContentLoaded", function () {
@@ -350,18 +353,18 @@
 <section id="configurator">
   <div class="container">
     <div class="row">
-      <h3 class="col-md-12">Ihre IT-Landschaft</h3>
-      <hr class="col-md-12" />
-      <div class="col-md-12 d-flex text-center">
+      <h3 class="col-md-12 mb-1">Ihre IT-Landschaft</h3>
+      <hr class="col-md-12 mb-5" />
+      <div class="row text-center mb-5">
         <div
           id="workstation"
-          class="col-md-6 col-md-3 d-flex flex-column infrastructure-box"
+          class="col-md-6 d-flex flex-column infrastructure-box mb-3"
           data-price="20"
         >
           <i class="bi bi-display"></i>
           <span>Arbeitsplätze</span>
           <span>20€</span>
-          <span>&nbsp;</span>
+          <span class="d-none">&nbsp;</span>
           <div
             class="flex align-items-center justify-content-evenly mt-10 number-counter"
             data-type="workstation"
@@ -396,9 +399,9 @@
     </div>
 
     <div class="row">
-      <h3 class="col-md-12">Wählen Sie Ihren Service-Level (SLA)</h3>
-      <hr class="col-md-12" />
-      <div class="col-md-12 flex text-center">
+      <h3 class="col-md-12 mb-1">Wählen Sie Ihren Service-Level (SLA)</h3>
+      <hr class="col-md-12 mb-5" />
+      <div class="row text-center">
         <div id="labels" class="col-md-3 d-flex flex-column sla-box">
           <span>&nbsp;</span>
           <span class="d-flex justify-content-between align-items-center"
@@ -492,13 +495,13 @@
       </div>
     </div>
 
-    <div id="costs" class="row mt-20">
-      <h3 class="col-12">Ihre Kosten</h3>
-      <hr class="col-12" />
+    <div id="costs" class="row mt-5">
+      <h3 class="col-12 mb-1">Ihre Kosten</h3>
+      <hr class="col-12 mb-5" />
 
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-lg-6 pt-3 pb-3 border bg-light">
         <div
-          class="col-12 col--no-gutters flex--direction-column flex-sm--direction-row flex flex--align-items-center flex--justify-content-evenly bg--light-grey"
+          class="col-12 d-flex gy-0 gx-0 flex-row flex-align-items-center justify-content-evenly"
         >
           <div
             class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
@@ -507,22 +510,18 @@
             <span><span id="serverSum">0</span>€</span>
             <span>Server</span>
           </div>
-          <div class="col-12 col-sm-1 flex flex--justify-content-center">
+          <div class="col-12 col-sm-1 d-flex justify-content-center">
             <i class="far fa-plus"></i>
           </div>
-          <div
-            class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
-          >
+          <div class="col-12 col-sm-3 d-flex flex-column align-items-center">
             <i class="far fa-desktop"></i>
             <span><span id="workstationSum">0</span>€</span>
             <span>Arbeitsplätze</span>
           </div>
-          <div class="col-12 col-sm-1 flex flex--justify-content-center">
+          <div class="col-12 col-sm-1 d-flex justify-content-center">
             <i class="far fa-equals"></i>
           </div>
-          <div
-            class="col-12 col-sm-3 flex flex--direction-column flex--align-items-center"
-          >
+          <div class="col-12 col-sm-3 d-flex flex-column align-items-center">
             <i class="far fa-building"></i>
             <span><span id="infrastructureSum">0</span>€</span>
             <span>IT-Landschaft</span>
@@ -530,29 +529,25 @@
         </div>
       </div>
 
-      <div class="col-12 col-xl-2 flex">
-        <div
-          class="col-12 flex flex--direction-column flex--align-items-center bg--light-grey"
-        >
+      <div class="col-12 col-lg-2 d-flex pt-3 pb-3 border bg-light">
+        <div class="col-12 d-flex flex-column align-items-center">
           <i class="far fa-briefcase"></i>
           <span>x <span id="slaFactor">1,0</span></span>
           <span id="selectedSlaName">Essentials</span>
         </div>
       </div>
 
-      <div class="col-12 col-xl-4 flex">
-        <div
-          class="col-12 flex flex--align-items-center bg--mis-blue color--light"
-        >
+      <div class="col-12 col-lg-4 d-flex pt-3 pb-3 border bg-blue">
+        <div class="col-12 d-flex align-items-center bg--mis-blue color--light">
           <div
-            class="col-5 col--no-gutters flex flex--align-self-stretch flex--align-items-center flex--justify-content-center"
+            class="col-5 d-flex align-self-stretch align-items-center justify-content-center"
           >
             <i class="fas fa-sack-dollar" style="font-size: 85px"></i>
           </div>
           <div
-            class="col-7 col--no-gutters flex flex--align-items-end flex--align-self-stretch flex--direction-column flex--justify-content-end"
+            class="col-7 d-flex align-items-end align-self-stretch flex-column justify-content-end"
           >
-            <span class="mb-10"><span id="monthlySum">0</span>€</span>
+            <span class="mb-5"><span id="monthlySum">0</span>€</span>
             <span>Monatlich</span>
           </div>
         </div>
